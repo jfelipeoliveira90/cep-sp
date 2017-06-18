@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/cep_sp"
+    username: "postgres"
+    password: "123456"
+    driver-class-name: "org.postgresql.Driver"
+    continue-on-error: "true"
+  data:
+    elasticsearch:
+      cluster-name: "cep-sp-cluster"
+      cluster-nodes: "127.0.0.1:9300"
