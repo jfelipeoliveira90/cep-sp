@@ -3,10 +3,13 @@ package br.com.jfelipe.cepsp.domain.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "zip_codes")
 public final class ZipCode implements Serializable {
     private static final long serialVersionUID = -5761752484840491650L;
 
@@ -20,11 +23,22 @@ public final class ZipCode implements Serializable {
     @Column(length = 100)
     private String district;
 
-    @OneToMany
-    @Column(name = "cities")
+    @ManyToOne
+    @JoinColumn(name = "cities_id", nullable = false)
     private City city;
 
-    @OneToMany
-    @Column(name = "states")
+    @ManyToOne
+    @JoinColumn(name = "states_id", nullable = false)
     private State state;
+
+    @Override
+    public String toString() {
+        return "ZipCode{" +
+                "number='" + number + '\'' +
+                ", address='" + address + '\'' +
+                ", district='" + district + '\'' +
+                ", city=" + city +
+                ", state=" + state +
+                '}';
+    }
 }
